@@ -1,0 +1,53 @@
+
+""" basic response """
+type Response {
+    success: Boolean
+    code: String
+    message: String
+}
+
+
+""" response tutores """
+type TutoresResponse {
+    total: Int
+    perPage: Int
+    lastPage: Int
+    page: Int
+    data: [Tutor]
+}
+
+
+""" response tutoriados """
+type TutoriadosResponse {
+    total: Int
+    perPage: Int
+    lastPage: Int
+    page: Int
+    data: [Tutoriado]
+}
+
+
+""" response actividades """
+type ActividadesResponse {
+    total: Int
+    perPage: Int
+    lastPage: Int
+    page: Int
+    data: [Actividad]
+}
+
+""" response plan acciones """
+type PlanAccionesResponse {
+    total: Int
+    perPage: Int
+    lastPage: Int
+    page: Int
+    data: [PlanAccion]
+}
+
+
+type AddTutoriadosResponse {
+    COD_ALUMNO: String
+    TXT_NOMBRE_COMPLETO: String
+    COD_DOCUMENTO: String
+}

@@ -1,4 +1,26 @@
+# importaciones
+# import * from "objects.graphql"
+# import * from "enums.graphql"
+# import * from "inputs.graphql"
+# import * from "responses.graphql"
 
+""" Root Query Type """
 type Query {
+    """ obtener a los alumnos que no tengan tutores"""
+    addTutoriados(cod_docente: String!, page: Int, like: String): [AddTutoriadosResponse]
+    """ obtener tutores """
+    getTutores(page: Int, like: String, order: OrderEnum): TutoresResponse
+    """ obtener listado de tutoriados """
+    getTutoriados(page: Int, like: String, order: String): TutoriadosResponse
+    """ obtener listado de todas la actividades """
+    getActividades(page: Int, like: String, order: String): ActividadesResponse
+    """ obtener listado de todos los plan de acciones """
+    getPlanAcciones(page: Int, like: String, order: String): PlanAccionesResponse
+}
+
+""" Root Mutation """
+type Mutation {
     message: String
+    """ crear tutoriados masivamente """
+    creatutoriadosAll(cod_docente: String!, periodo: String!, input: [inputCreateTutoriadosAll]!): Response
 }

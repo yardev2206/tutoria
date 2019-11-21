@@ -1,0 +1,77 @@
+
+""" tipo tutor """
+type Tutor {
+    id: ID!
+    persona_id: ID!
+    docente_id: ID!
+    carrera_id: ID!
+    facultad_id: ID!
+    periodo_id: ID!
+    observacion: String
+    activo: Boolean!
+    tutoriados: [Tutoriado]
+    plan_acciones: [PlanAccion]
+}
+
+
+""" tipo tutoriado """
+type Tutoriado {
+    id: ID!
+    persona_id: ID!
+    alumno_id: ID!
+    tutor_id: ID!
+    periodo_id: ID!
+    observacion: String
+    activo: Boolean!
+    tutor: Tutor
+    asistencias: [Asistencia]
+}
+
+
+""" tipo plan de accion """
+type PlanAccion {
+    id: ID!
+    tutor_id: ID!
+    periodo_id: ID!
+    descripcion: String!
+    fecha_inicio: String!
+    fecha_final: String!
+    activo: Boolean!
+    created_at: String
+    updated_at: String
+    tutor: Tutor
+    actividades: [Actividad]
+}
+
+
+""" tipo actividad """ 
+type Actividad {
+    id: ID!
+    plan_accion_id: ID!
+    periodo_id: ID!
+    descripcion: String!
+    fecha_inicio: String!
+    fecha_final: String!
+    activo: Boolean!
+    created_at: String
+    updated_at: String
+    plan_accion: PlanAccion
+    actividades: [Actividad]
+}
+
+
+""" tipo asistencia """
+type Asistencia {
+    id: ID!
+    actividad_id: ID!
+    tutoriado_id: ID!
+    alumno_id: ID!
+    persona_id: ID!
+    observacion: String
+    asistencia: Boolean!
+    activo: Boolean!
+    created_at: String
+    updated_at: String
+    actividad: Actividad
+    tutoriado: Tutoriado
+}

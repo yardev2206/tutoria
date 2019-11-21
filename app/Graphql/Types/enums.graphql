@@ -1,0 +1,7 @@
+
+
+""" enum para order by """
+enum OrderEnum {
+    ASC
+    DESC
+}

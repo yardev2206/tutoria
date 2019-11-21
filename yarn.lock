@@ -1241,6 +1241,19 @@ global-prefix@^1.0.1:
     is-windows "^1.0.1"
     which "^1.2.14"
 
+gql-request-node@^1.0.0:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/gql-request-node/-/gql-request-node-1.1.5.tgz#6f35a4f028498a307b6e3184d3a6b0ba425caa66"
+  integrity sha512-Ao0f5J4ZlyYvF7gapa73yEbR/sLmKx4hnvbuW7bDkLZPybV+IRsEPsvrp9jDaYpLOEFBb/Exe/GuVanAucrZIQ==
+  dependencies:
+    graphql "^14.5.7"
+    node-fetch "^2.6.0"
+
+gql-tag@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gql-tag/-/gql-tag-1.0.1.tgz#25294dc23986db5b950b81a8bc8debfb0acf6140"
+  integrity sha512-eVxldTiOtJJ3ySNgYbfRwyIyDDMATJ/ykojlQng5ihX1V0Xpr4C7ZXSZuWo7tg+kf+GS8lzhlbZmKSDjbYGhyA==
+
 graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.2.tgz#6f0952605d0140c1cfdb138ed005775b92d67b02"
@@ -1277,6 +1290,13 @@ graphql@^14.5.4:
   version "14.5.4"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.4.tgz#b33fe957854e90c10d4c07c7d26b6c8e9f159a13"
   integrity sha512-dPLvHoxy5m9FrkqWczPPRnH0X80CyvRE6e7Fa5AWEqEAzg9LpxHvKh24po/482E6VWHigOkAmb4xCp6P9yT9gw==
+  dependencies:
+    iterall "^1.2.2"
+
+graphql@^14.5.7:
+  version "14.5.8"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.8.tgz#504f3d3114cb9a0a3f359bbbcf38d9e5bf6a6b3c"
+  integrity sha512-MMwmi0zlVLQKLdGiMfWkgQD7dY/TUKt4L+zgJ/aR0Howebod3aNgP5JkgvAULiR2HPVZaP2VEElqtdidHweLkg==
   dependencies:
     iterall "^1.2.2"
 
@@ -1988,6 +2008,11 @@ node-exceptions@^3.0.0:
   resolved "https://registry.yarnpkg.com/node-exceptions/-/node-exceptions-3.0.0.tgz#48b8e10da71370845ef1af583778139527308d11"
   integrity sha512-pFhMAqdN1avrFwtZs66HxYiVnbnH9wjXB4m8IKs5Z9+r7U5voqxT+EDbVkRfge+V7JnkOgKhN4HfKBn1o5g9Wg==
 
+node-fetch@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
+  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+
 node-req@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/node-req/-/node-req-2.1.2.tgz#32db660855db03b456de370ee0d53ecd6220287e"
@@ -2070,6 +2095,11 @@ one-time@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/one-time/-/one-time-0.0.4.tgz#f8cdf77884826fe4dff93e3a9cc37b1e4480742e"
   integrity sha1-+M33eISCb+Tf+T46nMN7HkSAdC4=
+
+oracledb@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/oracledb/-/oracledb-4.0.1.tgz#1580be9d932a394bfe9cb5f913dfb41b21849cb8"
+  integrity sha512-IHgPS7+7kLHDEGP/L8o3Kh+rSyV6FArX1ob4xcOMc6hWt4EJVSVbHpPIpChGMOgb91x33AAb+kW9lVkqQIwRsg==
 
 os-homedir@^1.0.0:
   version "1.0.2"

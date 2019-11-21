@@ -1,0 +1,5 @@
+
+input inputCreateTutoriadosAll {
+    alumno_id: String!
+    persona_id: String!
+}

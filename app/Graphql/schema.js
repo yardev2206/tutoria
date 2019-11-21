@@ -11,6 +11,7 @@ const Mutation = require('./mutation')
 const typeDefs = importSchema(__dirname + '/Types/schema.graphql')
 const resolvers = { 
     Query,
+    Mutation,
 }
 
 // exportar el schema

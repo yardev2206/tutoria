@@ -1,8 +1,11 @@
 "use strict";
 
-const Route = use('Route')
-const GraphqlAdonis = use('ApolloServer')
-const schema = require('../app/Graphql/schema')
+const Route = use('Route');
+const GraphqlAdonis = use('ApolloServer');
+const schema = require('../app/Graphql/schema');
+const { client } = require('gql-request-node');
+const gql = require('gql-tag');
+
 
 Route.route('/graphql', ({ request, auth, response }) => {
     return GraphqlAdonis.graphql({
@@ -17,9 +20,5 @@ Route.get('/graphiql', ({ request, response }) => {
 
 
 Route.get('/', async function() {
-
-    const Alumno = use('App/Models/Alumno');
-    const alumnos = await Alumno.first();
-
-    return alumnos.toJSON();
+    return { message: 'Sistema de Tutoria' };
 });
