@@ -7,11 +7,17 @@ class PlanAccionSchema extends Schema {
   up () {
     this.create('plan_accions', (table) => {
       table.increments()
+      table.string('slug').unique();
       table.integer('tutor_id').notNullable();
-      table.integer('periodo_id').notNullable();
-      table.string('descripcion').notNullable();
-      table.date('fecha_inicio').notNullable();
-      table.date('fecha_final').notNullable();
+      table.string('docente_id', 20).notNullable();
+      table.string('persona_id', 20).notNullable();
+      table.string('periodo_id', 20).notNullable();
+      table.text('presentacion').notNullable();
+      table.text('justificacion').notNullable();
+      table.text('objetivo').notNullable();
+      table.string('fecha_inicio').notNullable();
+      table.string('fecha_final').notNullable();
+      table.integer('count_actividades').defaultTo(0);
       table.boolean('activo').defaultTo(true);
       table.timestamps()
     })

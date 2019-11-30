@@ -10,5 +10,9 @@ module.exports = {
     addTutoriados: TutoriadoResolver.addTutoriados,
     getTutores: TutorResolver.getTutores,
     getTutoriados: TutoriadoResolver.getTutoriados,
+    getTutoriadosTutor: TutoriadoResolver.getTutoriadosTutor,
     getActividades: ActividadResolver.getActividades,
+    getPlanAccionTutor: TutorResolver.getPlanAccionTutor,
+    getActividadesPlanAccion: ActividadResolver.getActividadesPlanAccion,
+    findActividad: ActividadResolver.findActividad,
 }

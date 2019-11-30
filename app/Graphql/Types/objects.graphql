@@ -19,10 +19,13 @@ type Tutoriado {
     id: ID!
     persona_id: ID!
     alumno_id: ID!
+    docente_id: ID!
     tutor_id: ID!
     periodo_id: ID!
-    observacion: String
+    motivos: String
+    recomendaciones: String
     activo: Boolean!
+    """ Relaciones """
     tutor: Tutor
     asistencias: [Asistencia]
 }
@@ -32,13 +35,19 @@ type Tutoriado {
 type PlanAccion {
     id: ID!
     tutor_id: ID!
+    docente_id: ID!
+    persona_id: ID!
     periodo_id: ID!
-    descripcion: String!
+    presentacion: String!
+    justificacion: String!
+    objetivo: String!
     fecha_inicio: String!
     fecha_final: String!
+    count_actividades: Int
     activo: Boolean!
     created_at: String
     updated_at: String
+    """ Relaciones """
     tutor: Tutor
     actividades: [Actividad]
 }
@@ -47,16 +56,22 @@ type PlanAccion {
 """ tipo actividad """ 
 type Actividad {
     id: ID!
+    persona_id: ID!
+    docente_id: ID!
+    tutor_id: ID!
     plan_accion_id: ID!
     periodo_id: ID!
     descripcion: String!
-    fecha_inicio: String!
-    fecha_final: String!
-    activo: Boolean!
+    hora_inicio: String!
+    fecha: String
+    hora_final: String!
+    count_asistencias: Int
+    reunion: Boolean
+    obligatorio: Boolean
+    activo: Boolean
     created_at: String
     updated_at: String
     plan_accion: PlanAccion
-    actividades: [Actividad]
 }
 
 
@@ -64,14 +79,23 @@ type Actividad {
 type Asistencia {
     id: ID!
     actividad_id: ID!
+    plan_accion_id: ID!
     tutoriado_id: ID!
     alumno_id: ID!
     persona_id: ID!
-    observacion: String
-    asistencia: Boolean!
-    activo: Boolean!
-    created_at: String
-    updated_at: String
+    activo: Boolean
+    """ relaciones """
     actividad: Actividad
     tutoriado: Tutoriado
+    plan_accion: PlanAccion
+}
+
+
+""" tipo file """
+type File {
+    id: ID!
+    actividad_id: ID!
+    type: String
+    path: String
+    size: String
 }

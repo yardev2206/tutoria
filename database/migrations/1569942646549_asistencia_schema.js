@@ -8,12 +8,11 @@ class AsistenciaSchema extends Schema {
     this.create('asistencias', (table) => {
       table.increments()
       table.integer('actividad_id').notNullable();
+      table.integer('plan_accion_id').notNullable();
       table.integer('tutoriado_id').notNullable();
-      table.integer('alumno_id').notNullable();
-      table.integer('persona_id').notNullable();
-      table.string('observacion')
-      table.boolean('asistencia').defaultTo(false);
-      table.boolean('activo').defaultTo(true);
+      table.string('alumno_id').notNullable();
+      table.string('persona_id').notNullable();
+      table.boolean('activo').defaultTo(false);
       table.timestamps()
     })
   }

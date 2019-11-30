@@ -1,6 +1,7 @@
 'use strict';
 
 const Tutor = use('App/Models/Tutor');
+const PlanAccion = use('App/Models/PlanAccion');
 
 class TutorResolver {
 
@@ -22,8 +23,16 @@ class TutorResolver {
         return tutores.toJSON();
     }
 
+    
     async createTutor(root, args) {
         return await Tutor.create(args);
+    }
+
+    getPlanAccionTutor = async (root, { tutor_id, page = 1, like, order = 'ASC' }) => {
+        let plan_acciones = await PlanAccion.query()
+            .where('tutor_id', tutor_id)
+            .paginate(page, 30)
+        return plan_acciones.toJSON();
     }
 
 }

@@ -6,11 +6,11 @@ const Model = use('Model')
 class Actividad extends Model {
 
     plan_accion() {
-        return this.belongsTo('Appl/Models/PlanAccion');
+        return this.belongsTo('App/Models/PlanAccion');
     }
 
-    actividades() {
-        return this.hasMany('App/Models/Actividad');
+    asistencias() {
+        return this.hasMany('App/Models/Asistencia');
     }
 
 }

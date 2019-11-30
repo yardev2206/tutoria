@@ -1,5 +1,22 @@
 
 input inputCreateTutoriadosAll {
-    alumno_id: String!
-    persona_id: String!
+    alumno_id: ID!
+    persona_id: ID!
+}
+
+input inputCreatePlanAccion {
+    presentacion: String!
+    justificacion: String!
+    objetivo: String!
+    fecha_inicio: String!
+    fecha_final: String!
+}
+
+
+input inputCreateActividad {
+    hora_inicio: String!
+    hora_final: String!
+    fecha: String!
+    descripcion: String!
+    reunion: Boolean
 }

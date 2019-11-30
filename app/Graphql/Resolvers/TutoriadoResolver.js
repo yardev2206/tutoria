@@ -2,6 +2,7 @@
 
 const Tutoriado = use('App/Models/Tutoriado')
 const Tutor = use('App/Models/Tutor')
+const PlanAccion = use('App/Models/PlanAccion');
 const { GET_ALUMNO, GET_ACTA_NOTAS } = require('../../../services/types/typeMatricula');
 const { matricula } = require('../../../services/apis');
 
@@ -53,6 +54,23 @@ class TutoriadoResolver {
     }
 
 
+    getTutoriadosTutor = async (root, { tutor_id, plan_accion_id, page = 1 }) => {
+        try {
+            const tutor = await Tutor.find(tutor_id);
+            if (!tutor) throw new Error("El tutor no existe!");
+            // obtener tutoriados del docente
+            let tutorados = await Tutoriado.query()
+                .where('tutor_id', tutor.id)
+                .whereDoesntHave('plan_tutorials', (builder) => {
+                    builder.where({'plan_accion_id': plan_accion_id});
+                }).paginate();
+            return tutorados.toJSON();
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
+
     async creatutoriadosAll(root, { cod_docente, periodo, input }) {
         try {
             // payload
@@ -70,11 +88,9 @@ class TutoriadoResolver {
                 facultad_id: "12",
                 periodo_id: periodo
             })
-            // verificamos si no se obtuvo al tutor
-            if (!tutor) throw new Error('El docente no está asignado!');
             // obtenemos a todos los tutoriados del docente
             let tutoriados = await Tutoriado.query()
-                .where('docente_id', cod_docente)
+                .where('tutor_id', tutor.id)
                 .where('periodo_id', periodo)
                 .fetch()
             // serializar
@@ -88,13 +104,13 @@ class TutoriadoResolver {
                         persona_id: alum.persona_id,
                         alumno_id: alum.alumno_id,
                         tutor_id: tutor.id,
-                        docente_id: cod_docente,
-                        periodo_id: periodo
+                        docente_id: tutor.docente_id,
+                        periodo_id: tutor.periodo_id
                     });
                 }
             })
             // almacenamos a los tutoriados
-            Tutoriado.createMany(payload);
+            await Tutoriado.createMany(payload);
             // response
             return {
                 success: true, 

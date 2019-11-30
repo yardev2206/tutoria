@@ -16,11 +16,25 @@ type Query {
     getActividades(page: Int, like: String, order: String): ActividadesResponse
     """ obtener listado de todos los plan de acciones """
     getPlanAcciones(page: Int, like: String, order: String): PlanAccionesResponse
+    """ obtener plan de accion de un determinado tutor """
+    getPlanAccionTutor(tutor_id: ID!, page: Int, like: String, order: String): PlanAccionesResponse
+    """ obtener los tutoriados de un determinado tutor """
+    getTutoriadosTutor(tutor_id: ID!, plan_accion_id: ID! page: Int) : TutoriadosResponse
+    """ obtener las actividades de un plan de accion especifico """
+    getActividadesPlanAccion(plan_accion_id: ID!, page: Int!): ActividadesResponse
+    """ obtener una actividad especifica """
+    findActividad(id: ID!): Actividad
 }
 
 """ Root Mutation """
 type Mutation {
     message: String
     """ crear tutoriados masivamente """
-    creatutoriadosAll(cod_docente: String!, periodo: String!, input: [inputCreateTutoriadosAll]!): Response
+    creatutoriadosAll(cod_docente: ID!, periodo: String!, input: [inputCreateTutoriadosAll]!): Response
+    """ crear plan de acción """
+    createPlanAccion(tutor_id: ID!, input: inputCreatePlanAccion): Response
+    """ asignar a los alumnos """
+    createPlanTutorial(plan_accion_id: ID!, ids: [ID!]): Response
+    """ crear actividad a un plan de accion """
+    createActividad(plan_accion_id: ID!, input: inputCreateActividad): Response
 }

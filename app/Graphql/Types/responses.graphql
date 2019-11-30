@@ -46,6 +46,7 @@ type PlanAccionesResponse {
 }
 
 
+
 type AddTutoriadosResponse {
     COD_ALUMNO: String
     TXT_NOMBRE_COMPLETO: String
