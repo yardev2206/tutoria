@@ -31,6 +31,7 @@ class TutorResolver {
     getPlanAccionTutor = async (root, { tutor_id, page = 1, like, order = 'ASC' }) => {
         let plan_acciones = await PlanAccion.query()
             .where('tutor_id', tutor_id)
+            .orWhere('persona_id', tutor_id)
             .paginate(page, 30)
         return plan_acciones.toJSON();
     }

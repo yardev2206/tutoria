@@ -1,0 +1,66 @@
+@layout('layouts.reports')
+
+
+@section('content')
+      <br />
+      <h3 class="text-center">PLAN DE ACCION TUTORIAL SEMESTRE 2019-II</h3>
+      <br />
+      <section id="reporte">
+        <p class="lead text-justify">
+          <u>I. PRESENTACION</u>
+          <br />
+        </p>
+        <p class="lead text-justify">
+          {{ plan_accion.presentacion }}
+          <br />
+        </p>
+        <p class="lead text-justify">
+          <u>II. JUSTIFICACION</u>
+          <br />
+        </p>
+        <p class="lead text-justify">
+          {{ plan_accion.justificacion }}
+          <br />
+        </p>
+        <p class="lead text-justify">
+          <u>III. OBJETIVO</u>
+          <br />
+        </p>
+        <p class="lead text-justify">
+          3.1 OBJEITO GENERAL
+          <br />
+          {{ plan_accion.objetivo }}
+          <br />
+        </p>
+        <p class="lead text-justify">
+          <u>IV. CRONOGRAMA</u>
+          <br />
+        </p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th rowspan="2" style="text-align: center;">Nº</th>
+              <th rowspan="2">Acciones</th>
+              <th rowspan="2">Fecha</th>
+              <th>Hora de Inicio</th>
+              <th>Hora de Termino</th>
+              <th>Reunión</th>
+            </tr>
+          </thead>
+          <tbody>
+            @each(actividad in plan_accion.actividades)
+              <tr>
+                <td style="text-align: center;">{{ actividad.id }}</td>
+                <td>{{ actividad.descripcion }}</td>
+                <td>{{ actividad.fecha }}</td>
+                <td>{{ actividad.hora_inicio }}</td>
+                <td>{{ actividad.hora_final }}</td>
+                <td>{{ actividad.reunion ? actividad.count_asistencias > 1 ? 'GRUPAL' : 'INDIVIDUAL' : 'NO' }}</td>
+              </tr>
+            @endeach
+          </tbody>
+        </table>
+        <br />
+      </section>
+    </div>
+@endsection

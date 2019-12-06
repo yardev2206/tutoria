@@ -20,3 +20,16 @@ input inputCreateActividad {
     descripcion: String!
     reunion: Boolean
 }
+
+
+input inputCreateAsistencia {   
+    persona_id: ID!
+    alumno_id: ID!
+    tutoriado_id: ID!
+}
+
+
+input inputFilter {
+    key: String!
+    value: String
+}

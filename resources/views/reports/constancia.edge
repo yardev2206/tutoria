@@ -1,0 +1,38 @@
+@layout('layouts.reports')
+
+@section('content')
+      <br />
+      <h3 class="text-center">CONSTANCIA DE TUTORIA</h3>
+      <br />
+      <section id="reporte">
+        <p class="lead text-justify">
+          YO {{ asistencia.docente.TXT_APELLIDOS_NOMBRES }} con código de Docente N° {{ asistencia.plan_accion.docente_id }}
+          Docente tutor del Estudiante {{ asistencia.persona.nombre_completo }} con código {{ asistencia.alumno_id }}
+          Estudiante de la Escuela Profesional de Enfermería Facultad de
+          Ciencias de la Salud.
+          <br />
+          <br />
+          <u>HACE CONSTAR</u>
+          <br />
+        </p>
+        <p class="lead text-justify">
+          Que, el estudiante ha recibido "{{ asistencia.actividad.descripcion }}" una sesión de tutoría el {{ fecha }}.
+          Hora de Inicio {{ asistencia.actividad.hora_inicio }} Hora de Termino {{ asistencia.actividad.hora_final }}. En la cual se le da las
+          recomendaciones correspondientes. Se expide la constancia para que sea
+          presentado el día del examen de medio ciclo.
+          <br />
+          <br />
+          Para tal fin se da la conformidad
+        </p>
+        <br /><br /><br />
+        <div class="lead text-center">
+          <strong
+            >............................................................
+            <br />
+            {{ asistencia.docente.TXT_PREFIJO ? sistencia.docente.TXT_PREFIJO : '' }} {{ asistencia.docente.TXT_APELLIDOS_NOMBRES }}
+            <br />
+            Firma del Docente tutor
+          </strong>
+        </div>
+      </section>
+@endsection

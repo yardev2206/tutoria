@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title></title>
+    <link href="/report/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body id="page-top" style="margin-top: 40px;">
+    <div class="container" style="align-content: center;">
+      <div class="row">
+        <table border="1" class="table" style="width: 80%;">
+          <tbody>
+            <tr>
+              <td class="col-sm-4 col-sm-offset-3">
+                <p style="text-align: center;">
+                  <b>UNIVERSIDAD NACIONAL DE UCAYALI</b> <br />
+                  FACULTAD DE CIENCIAS DE LA SALUD <br />
+                  ESCUELA PROFESIONAL DE ENFERMERIA<br />
+                  CARRERA PROFESIONAL DE ENFERMERIA
+                </p>
+                <br />
+                <p style="text-align: center;">
+                  <strong>FICHA DE REGISTRO DE TUTORIA</strong>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <table border="1" class="table" style="width: 80%;">
+          <tbody>
+            <tr>
+              <td colspan="4">DATOS GENERALES</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: center;">
+                DOCENTE TUTOR
+              </td>
+              <td colspan="2" style="text-align: center;">
+                CORREO ELECTRONICO
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">
+                APELLIDOS Y NOMBRES DEL TUTORADO
+              </td>
+              <td colspan="2" style="text-align: center;">SEXO</td>
+              <td style="text-align: center;">DNI</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">CODIGO</td>
+              <td colspan="2" style="text-align: center;">AÑO DE INGRESO</td>
+              <td style="text-align: center;">MODALIDAD DE INGRESO</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">DOMICILIO</td>
+              <td colspan="2" style="text-align: center;">DISTRITO</td>
+              <td style="text-align: center;">PROVINCIA</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">DEPARTAMENTO</td>
+              <td colspan="2" style="text-align: center;">TELEFONO FIJO</td>
+              <td style="text-align: center;">Nº CELULAR</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: center;">
+                CORREO ELECTRONICO
+              </td>
+              <td colspan="2" style="text-align: center;">OBS.</td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <table border="1" class="table" style="width: 80%;">
+          <tbody>
+            <tr>
+              <td colspan="7">SITUACION ACADEMICA</td>
+            </tr>
+            <tr>
+              <td rowspan="6">CONDICION DEL ESTUDIANTE</td>
+              <td>PPS</td>
+              <td></td>
+              <td>PPA</td>
+              <td></td>
+              <td>CA</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="6" style="text-align: center;">REGULAR ( )</td>
+            </tr>
+            <tr>
+              <td>Nº DE ASIGNATURAS MATRICULADAS</td>
+              <td></td>
+              <td>Nº DE ASIGNATURAS CON RETIROS</td>
+              <td></td>
+              <td>AÑO DE REINGRESO</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="6" style="text-align: center;">
+                IRREGULAR ( )
+              </td>
+            </tr>
+            <tr>
+              <td>Nº DE ASIGNATURAS MATRICULADAS</td>
+              <td colspan="5"></td>
+            </tr>
+            <tr>
+              <td>OBSERVADO CICLO AÑO</td>
+              <td></td>
+              <td>AMONESTADO CICLO AÑO</td>
+              <td></td>
+              <td>RETIRADO CICLO AÑO</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <table border="1" class="table" style="width: 80%;">
+          <tbody>
+            <tr>
+              <td>MOTIVO DE ENTREVISTA :</td>
+            </tr>
+            <tr>
+              <td>{{ tutoriado.motivos ? tutoriado.motivos : '' }}</td>
+            </tr>
+            <tr>
+              <td>RECOMENDACIONES</td>
+            </tr>
+            <tr>
+              <td>
+                {{ tutoriado.recomendaciones ? tutoriado.recomendaciones : '' }}
+              </td>
+            </tr>
+            <tr style="text-align: right;">
+              <td>Pucallpa, {{ fecha }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <div class="row">
+        <table class="table" style="width: 80%;">
+          <tbody>
+            <tr style="text-align: center;">
+              <td>_________________________________</td>
+              <td>_________________________________</td>
+            </tr>
+            <tr style="text-align: center;">
+              <td>FIRMA DEL DOCENTE</td>
+              <td>FIRMA DEL ESTUDIANTE</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

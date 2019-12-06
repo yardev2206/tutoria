@@ -3,8 +3,8 @@ const GET_ALUMNO = `
     {
         getAlumnos{
             data {
-                cod_alumno
-                txt_nombre_completo
+                COD_ALUMNO
+                TXT_NOMBRE_COMPLETO
             }
         }
     }
@@ -29,4 +29,26 @@ const GET_ACTA_NOTAS = `
 `;
 
 
-module.exports = { GET_ALUMNO, GET_ACTA_NOTAS }
+const FIND_DOCENTE = `
+    query findDocente($dni: ID!){
+        findDocente(id: $dni) {
+            COD_DOCENTE
+            TXT_APELLIDOS_NOMBRES
+            TXT_PREFIJO
+        }
+    }
+`;
+
+
+const FICHA_TUTORIAL = `
+
+
+
+`;
+
+
+module.exports = { 
+    GET_ALUMNO, 
+    GET_ACTA_NOTAS,
+    FIND_DOCENTE,
+}

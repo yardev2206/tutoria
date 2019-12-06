@@ -11,19 +11,23 @@ type Query {
     """ obtener tutores """
     getTutores(page: Int, like: String, order: OrderEnum): TutoresResponse
     """ obtener listado de tutoriados """
-    getTutoriados(page: Int, like: String, order: String): TutoriadosResponse
+    getTutoriados(page: Int, like: String, order: String): [Tutoriado]
+    """ obtenr un tutoriado especifico """
+    findTutoriado(id: ID, filter: [inputFilter]): Tutoriado
     """ obtener listado de todas la actividades """
     getActividades(page: Int, like: String, order: String): ActividadesResponse
     """ obtener listado de todos los plan de acciones """
-    getPlanAcciones(page: Int, like: String, order: String): PlanAccionesResponse
+    getPlanAcciones(page: Int, docente_id: ID, like: String, order: String): PlanAccionesResponse
     """ obtener plan de accion de un determinado tutor """
     getPlanAccionTutor(tutor_id: ID!, page: Int, like: String, order: String): PlanAccionesResponse
     """ obtener los tutoriados de un determinado tutor """
-    getTutoriadosTutor(tutor_id: ID!, plan_accion_id: ID! page: Int) : TutoriadosResponse
+    getTutoriadosTutor(tutor_id: ID!, plan_accion_id: ID! page: Int) : [Tutoriado]
     """ obtener las actividades de un plan de accion especifico """
     getActividadesPlanAccion(plan_accion_id: ID!, page: Int!): ActividadesResponse
     """ obtener una actividad especifica """
     findActividad(id: ID!): Actividad
+    """ obtener tutoriados x periodo y docente """
+    getTutoriadosPeriodo(docente_id: ID!, periodo_id: ID!): [Tutoriado]
 }
 
 """ Root Mutation """
@@ -37,4 +41,8 @@ type Mutation {
     createPlanTutorial(plan_accion_id: ID!, ids: [ID!]): Response
     """ crear actividad a un plan de accion """
     createActividad(plan_accion_id: ID!, input: inputCreateActividad): Response
+    """ crear asistencias masivamente """
+    createAsistenciasAll(actividad_id: ID!, collection: [inputCreateAsistencia]): Response
+    """ marcar asistencia """
+    markAsAsistencia(asistencia_id: ID!): Response
 }

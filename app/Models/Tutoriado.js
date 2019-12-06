@@ -13,10 +13,6 @@ class Tutoriado extends Model {
         return this.hasMany('App/Models/Asistencia');
     }
 
-    plan_tutorials() {
-        return this.hasMany('App/Models/PlanTutorial');
-    }
-
 }
 
 module.exports = Tutoriado

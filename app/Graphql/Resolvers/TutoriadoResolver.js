@@ -48,7 +48,7 @@ class TutoriadoResolver {
             .orWhere('tutor_id', 'like', `%${like}%`)
             .orWhere('periodo_id', 'like', `%${like}%`)
         // paginar
-        tutoriados = await tutoriados.paginate(page, 30);
+        tutoriados = await tutoriados.fetch();
         // devolver tutoriados en tutoriados
         return tutoriados.toJSON();
     }
@@ -63,7 +63,7 @@ class TutoriadoResolver {
                 .where('tutor_id', tutor.id)
                 .whereDoesntHave('plan_tutorials', (builder) => {
                     builder.where({'plan_accion_id': plan_accion_id});
-                }).paginate();
+                }).fetch();
             return tutorados.toJSON();
         } catch (error) {
             throw new Error(error.message);
@@ -124,6 +124,37 @@ class TutoriadoResolver {
                 message: error.message
             }
         }
+    }
+
+
+    findTutoriado = async (root, { id, filter }) => {
+        let tutoriado = Tutoriado.query()
+            .with('asistencias', (builder) => {
+                builder.with('actividad');
+            }).with('tutor')
+        // validar si no existe el id
+        if (!id) {
+            for(let fill of filter) {
+                tutoriado = tutoriado.where(fill.key, fill.value);
+            }
+        }else {
+            tutoriado = tutoriado.where('id', id);
+        }
+        // obtenemos al tutoriado
+        tutoriado = await tutoriado.first();
+        // verificamos que exista
+        if (!tutoriado) throw new Error('el tutoriado no existe!');
+        // response 
+        return tutoriado.toJSON();
+    }
+
+
+    getTutoriadoPeriodo = async (root, { docente_id, periodo_id, page }) => {
+        let tutoriados = await Tutoriado.query()
+            .where('docente_id', docente_id)
+            .where('periodo_id', periodo_id)
+            .fetch();
+        return tutoriados.toJSON();
     }
 
 }

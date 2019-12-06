@@ -49,7 +49,7 @@ class ActividadResolver {
             // crear slug
             let slug = slugify(`${plan_accion.id}${input.fecha}`, { lower: true });
             // prepara actividad antes  de insertar a la db
-            await Actividad.create({
+            let actividad = await Actividad.create({
                 slug,
                 persona_id: plan_accion.persona_id,
                 docente_id: plan_accion.docente_id,
@@ -66,7 +66,7 @@ class ActividadResolver {
             plan_accion.count_actividades = plan_accion.count_actividades + 1;
             await plan_accion.save();
             // response
-            return { success: true, code: "201", message: "La actividad se creó correctamente!" };
+            return { success: true, code: "201", message:  actividad.id };
         } catch (error) {
             return { success: false, code: "501", message: error.message };
         }

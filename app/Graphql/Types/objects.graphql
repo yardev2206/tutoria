@@ -71,7 +71,9 @@ type Actividad {
     activo: Boolean
     created_at: String
     updated_at: String
+    """ relaciones """
     plan_accion: PlanAccion
+    asistencias: [Asistencia]
 }
 
 
@@ -92,10 +94,18 @@ type Asistencia {
 
 
 """ tipo file """
-type File {
+type FileActividad {
     id: ID!
     actividad_id: ID!
     type: String
     path: String
     size: String
 }
+
+
+""" tipo de file para el upload """
+type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }

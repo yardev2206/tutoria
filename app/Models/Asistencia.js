@@ -13,6 +13,10 @@ class Asistencia extends Model {
         return this.belongsTo('App/Models/Tutoriado');
     }
 
+    plan_accion() {
+        return this.belongsTo('App/Models/PlanAccion');
+    }
+
 }
 
 module.exports = Asistencia
