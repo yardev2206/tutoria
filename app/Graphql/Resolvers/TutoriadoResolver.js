@@ -61,9 +61,7 @@ class TutoriadoResolver {
             // obtener tutoriados del docente
             let tutorados = await Tutoriado.query()
                 .where('tutor_id', tutor.id)
-                .whereDoesntHave('plan_tutorials', (builder) => {
-                    builder.where({'plan_accion_id': plan_accion_id});
-                }).fetch();
+                .fetch();
             return tutorados.toJSON();
         } catch (error) {
             throw new Error(error.message);
