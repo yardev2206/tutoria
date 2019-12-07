@@ -28,6 +28,8 @@ type Query {
     findActividad(id: ID!): Actividad
     """ obtener tutoriados x periodo y docente """
     getTutoriadosPeriodo(docente_id: ID!, periodo_id: ID!): [Tutoriado]
+    """ obtener una asistencia especifica """
+    findAsistencia(filters: [inputFilter]!): Asistencia
 }
 
 """ Root Mutation """
@@ -45,4 +47,6 @@ type Mutation {
     createAsistenciasAll(actividad_id: ID!, collection: [inputCreateAsistencia]): Response
     """ marcar asistencia """
     markAsAsistencia(asistencia_id: ID!): Response
+    """ actualizar a un tutoriado especifico """
+    updateTutoriado(filters: [inputFilter]!, motivos: String!, recomendaciones: String!): Response
 }

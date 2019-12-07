@@ -58,6 +58,19 @@ class AsistenciaResolver {
         }
     }
 
+
+    findAsistencia = async (root, { filters }) => {
+        let asistencia = Asistencia.query()
+            .with('tutoriado')
+            .with('actividad')
+        // obtener filter
+        for(let filter in filters) {
+            asistencia = asistencia.where(filte.key, filter.value);
+        }
+        // response
+        return await asistencia.first();
+    }
+
 }
 
 module.exports = new AsistenciaResolver;

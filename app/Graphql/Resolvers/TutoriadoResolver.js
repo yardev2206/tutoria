@@ -155,6 +155,23 @@ class TutoriadoResolver {
         return tutoriados.toJSON();
     }
 
+
+    updateTutoriado = async (root, { filters = [], motivos, recomendaciones }) => {
+        try {
+            let tutoriado = Tutoriado.query()
+            // filter
+            for (let filter of filters) {
+                tutoriado = tutoriado.where(filter.key, filter.value);
+            }
+            // actualizar tutoriado
+            await tutoriado.update({ motivos, recomendaciones });
+            // response
+            return { success: true, message: "Los datos se guardarón correctamente!", code: "201" };
+        } catch (error) {
+            return { success: false, message: error.message, code: "501" };
+        }
+    }
+
 }
 
 module.exports = new TutoriadoResolver;

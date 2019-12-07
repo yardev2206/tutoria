@@ -18,4 +18,5 @@ module.exports = {
     getActividadesPlanAccion: ActividadResolver.getActividadesPlanAccion,
     findActividad: ActividadResolver.findActividad,
     getTutoriadosPeriodo: TutoriadoResolver.getTutoriadoPeriodo,
+    findAsistencia: AsistenciaResolver.findAsistencia,
 }

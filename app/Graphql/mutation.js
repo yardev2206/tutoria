@@ -11,4 +11,5 @@ module.exports = {
     createActividad: ActividadResolver.createActividad,
     createAsistenciasAll: AsistenciaResolver.createAsistenciasAll,
     markAsAsistencia: AsistenciaResolver.markAsAsistencia,
+    updateTutoriado: TutoriadoResolver.updateTutoriado,
 }
