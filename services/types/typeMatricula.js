@@ -41,9 +41,24 @@ const FIND_DOCENTE = `
 
 
 const FICHA_TUTORIAL = `
-
-
-
+    query fichaTutorial($id: String!, $cod: ID!, $docente_id: ID!) {
+        avance: findAvanceCurricular(filters: [{key: "COD_ALUMNO", value: $id}]) {
+            COD_ALUMNO
+            NUM_PROM_APROB_PLAN_ACTUAL
+            NUM_PROM_POND_PERIODO_ANT
+            NUM_CRED_APROB_PLAN_ACTUAL
+            NUM_CUR_INSC_PERIODO_ANT
+        },
+        alumno: findAlumno(id: $cod) {
+            TXT_OBSERVACION
+            COD_PERIODO
+            COD_MODALIDAD_INGRESO
+        },
+  		docente:findDocente(id: $docente_id) {
+            TXT_APELLIDOS_NOMBRES	
+            TXT_PREFIJO
+		}
+    }
 `;
 
 
@@ -51,4 +66,5 @@ module.exports = {
     GET_ALUMNO, 
     GET_ACTA_NOTAS,
     FIND_DOCENTE,
+    FICHA_TUTORIAL,
 }

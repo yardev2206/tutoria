@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title></title>
-    <link href="/report/css/bootstrap.min.css" rel="stylesheet" />
+    <title>FICHA DE TUTORIA</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
   </head>
   <body id="page-top" style="margin-top: 40px;">
     <div class="container" style="align-content: center;">
       <div class="row">
-        <table border="1" class="table" style="width: 80%;">
+        <table class="table table-bordered">
           <tbody>
             <tr>
               <td class="col-sm-4 col-sm-offset-3">
@@ -32,7 +32,7 @@
         </table>
       </div>
       <div class="row">
-        <table border="1" class="table" style="width: 80%;">
+        <table class="table table-striped table-bordered">
           <tbody>
             <tr>
               <td colspan="4">DATOS GENERALES</td>
@@ -46,8 +46,8 @@
               </td>
             </tr>
             <tr>
+              <td colspan="2" class="text-center">{{ tutoriado.docente ? tutoriado.docente.TXT_APELLIDOS_NOMBRES : '' }}</td>
               <td colspan="2"></td>
-              <td <td colspan="2"></td>
             </tr>
             <tr>
               <td style="text-align: center;">
@@ -57,10 +57,10 @@
               <td style="text-align: center;">DNI</td>
             </tr>
             <tr>
+              <td class="text-center">{{ tutoriado.persona ? tutoriado.persona.nombre_completo : '' }}</td>
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>
+              <td class="text-center">{{ tutoriado.persona ? tutoriado.persona.numero_de_documento : '' }}</td>
             </tr>
             <tr>
               <td style="text-align: center;">CODIGO</td>
@@ -68,32 +68,22 @@
               <td style="text-align: center;">MODALIDAD DE INGRESO</td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;">DOMICILIO</td>
-              <td colspan="2" style="text-align: center;">DISTRITO</td>
-              <td style="text-align: center;">PROVINCIA</td>
-            </tr>
-            <tr>
-              <td></td>
+              <td class="text-center">{{ tutoriado.alumno_id }}</td>
               <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr>
-              <td style="text-align: center;">DEPARTAMENTO</td>
-              <td colspan="2" style="text-align: center;">TELEFONO FIJO</td>
-              <td style="text-align: center;">Nº CELULAR</td>
+              <td style="text-align: center;" colspan="4">DOMICILIO</td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td class="text-center" colspan="4">{{ tutoriado.persona ? tutoriado.persona.direccion : '' }}</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;" colspan="4">Nº CELULAR O TELEFONO</td>
+            </tr>
+            <tr>
+              <td colspan="4" class="text-center">{{ tutoriado.persona ? tutoriado.persona.telefono : '' }}</td>
             </tr>
             <tr>
               <td colspan="2" style="text-align: center;">
@@ -103,13 +93,13 @@
             </tr>
             <tr>
               <td colspan="2"></td>
-              <td colspan="2"></td>
+              <td colspan="2">{{ tutoriado.alumno ? tutoriado.alumno.TXT_OBSERVACION : '' }}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="row">
-        <table border="1" class="table" style="width: 80%;">
+        <table class="table table-bordered">
           <tbody>
             <tr>
               <td colspan="7">SITUACION ACADEMICA</td>
@@ -117,22 +107,22 @@
             <tr>
               <td rowspan="6">CONDICION DEL ESTUDIANTE</td>
               <td>PPS</td>
-              <td></td>
+              <td>{{ tutoriado.avance ? tutoriado.avance.NUM_PROM_POND_PERIODO_ANT : '' }}</td>
               <td>PPA</td>
-              <td></td>
+              <td>{{ tutoriado.avance ? tutoriado.avance.NUM_PROM_APROB_PLAN_ACTUAL : '' }}</td>
               <td>CA</td>
-              <td></td>
+              <td>{{ tutoriado.avance ? tutoriado.avance.NUM_CRED_APROB_PLAN_ACTUAL : '' }}</td>
             </tr>
             <tr>
               <td colspan="6" style="text-align: center;">REGULAR ( )</td>
             </tr>
             <tr>
               <td>Nº DE ASIGNATURAS MATRICULADAS</td>
-              <td></td>
+              <td>{{ tutoriado.avance ? tutoriado.avance.NUM_CUR_INSC_PERIODO_ANT : '' }}</td>
               <td>Nº DE ASIGNATURAS CON RETIROS</td>
               <td></td>
               <td>AÑO DE REINGRESO</td>
-              <td></td>
+              <td>{{ tutoriado.alumno ? tutoriado.alumno.COD_PERIODO : '' }}</td>
             </tr>
             <tr>
               <td colspan="6" style="text-align: center;">
@@ -141,7 +131,7 @@
             </tr>
             <tr>
               <td>Nº DE ASIGNATURAS MATRICULADAS</td>
-              <td colspan="5"></td>
+              <td colspan="5">{{ tutoriado.avance ? tutoriado.avance.NUM_CUR_INSC_PERIODO_ANT : '' }}</td>
             </tr>
             <tr>
               <td>OBSERVADO CICLO AÑO</td>
@@ -155,7 +145,7 @@
         </table>
       </div>
       <div class="row">
-        <table border="1" class="table" style="width: 80%;">
+        <table class="table table-striped">
           <tbody>
             <tr>
               <td>MOTIVO DE ENTREVISTA :</td>

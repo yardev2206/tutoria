@@ -16,7 +16,7 @@ class ReportController {
             let asistencia = await Asistencia.query()
                 .with('plan_accion')
                 .with('actividad')
-                .where('activo', true)
+                .where('activo', 1)
                 .where('id', params.tutoriado_id)
                 .firstOrFail();
             // converir a JSON
@@ -39,7 +39,7 @@ class ReportController {
             // rederizar vista
             return view.render('reports.constancia', { asistencia, fecha })
         } catch (error) {
-            return 'No hay registros'
+            return error.message
         }
     }
 
@@ -59,8 +59,25 @@ class ReportController {
     ficha_tutoria = async ({ request, response, view }) => {
         let { params } = request;
         let tutoriado = await Tutoriado.findOrFail(params.id);
+        // authenticacion
+        await auth({ query: typeAuth.GET_DATA_FICHA, variables: { per_alumno: tutoriado.persona_id } })
+            .then(resData => resData.json())
+            .then(res => {
+                let { per_alumno } = res.data;
+                tutoriado.persona = per_alumno;
+            }).catch(err => console.log(err.message));
+        // matricula
+        await matricula({ query: typeMatricula.FICHA_TUTORIAL, variables: { id: tutoriado.alumno_id, cod: tutoriado.alumno_id, docente_id: tutoriado.docente_id } })
+            .then(resData => resData.json())
+            .then(res => {
+                let { avance, alumno, docente } = res.data;
+                tutoriado.avance = avance;
+                tutoriado.alumno = alumno;
+                tutoriado.docente = docente;
+            }).catch(err => console.log(err.message));
         let fecha = new Date().toDateString();
-        return tutoriado;
+
+        // return tutoriado;
         return view.render('reports.ficha_tutoria', { tutoriado, fecha });
     }
 
